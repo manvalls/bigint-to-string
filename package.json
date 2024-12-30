@@ -1,0 +1,28 @@
+{
+  "name": "bigint-to-string",
+  "version": "0.1.0",
+  "description": "Deeply convert bigint values to strings",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "prepare": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manvalls/bigint-to-string.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manvalls/bigint-to-string/issues"
+  },
+  "homepage": "https://github.com/manvalls/bigint-to-string#readme",
+  "peerDependencies": {},
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
