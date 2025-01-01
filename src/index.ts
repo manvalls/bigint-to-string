@@ -28,11 +28,23 @@ const bigIntToString = <T>(obj: T, base: number = 10): BigIntToString<T> => {
 
 export const returnBigIntToString =
   (base: number = 10) =>
-  <F extends (...args: any[]) => any>(
-    fn: F
-  ): ((...args: Parameters<F>) => BigIntToString<ReturnType<F>>) => {
-    return (...args: Parameters<typeof fn>): BigIntToString<ReturnType<F>> => {
+  <A extends any[], R>(
+    fn: (...args: A) => R
+  ): ((...args: A) => BigIntToString<R>) => {
+    return (...args: Parameters<typeof fn>): BigIntToString<R> => {
       return bigIntToString(fn(...args), base);
+    };
+  };
+
+export const asyncReturnBigIntToString =
+  (base: number = 10) =>
+  <A extends any[], R>(
+    fn: (...args: A) => Promise<R>
+  ): ((...args: A) => Promise<BigIntToString<R>>) => {
+    return async (
+      ...args: Parameters<typeof fn>
+    ): Promise<BigIntToString<R>> => {
+      return bigIntToString(await fn(...args), base);
     };
   };
 
