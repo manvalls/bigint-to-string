@@ -10,12 +10,15 @@ type BigIntValuesToStrings<T> = {
 
 const bigIntToString = <T>(obj: T, base: number = 10): BigIntToString<T> => {
   if (obj instanceof Array) {
-    return obj.map(bigIntToString) as any;
+    return obj.map((value) => bigIntToString(value, base)) as any;
   }
 
   if (typeof obj === "object" && obj !== null) {
     return Object.fromEntries(
-      Object.entries(obj).map(([key, value]) => [key, bigIntToString(value)])
+      Object.entries(obj).map(([key, value]) => [
+        key,
+        bigIntToString(value, base),
+      ])
     ) as any;
   }
 
